@@ -49,7 +49,7 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 ## External Integrations
 - **LangSmith**: um `Client()` por execução, configurado pelo `.env`. O pull de `owner/nome` usa `dangerously_pull_public_prompt=True`. O push usa `is_public=True` e o identificador `{USERNAME_LANGSMITH_HUB}/<prompt_name>_v<N>`.
 - **OpenAI**: só por `get_llm`/`get_eval_llm`. `LLM_MODEL` e `EVAL_MODEL` recebem o mesmo modelo, que deve aceitar `temperature=0`.
-- Falha de integração (credencial, prompt inexistente, handle inválido) gera mensagem explícita e código de saída diferente de zero. Nada é publicado parcialmente.
+- Falha de integração (credencial, prompt inexistente, handle inválido) gera mensagem explícita e código de saída diferente de zero. Nenhum template é publicado parcialmente. Como o Hub grava os metadados antes do commit, eles podem ficar à frente do template após uma falha, e se acertam na próxima execução bem-sucedida.
 
 ## Domain Rules
 - **Schema do YAML** (AD-2): uma única chave de topo igual ao nome do arquivo sem extensão, contendo `description`, `system_prompt`, `user_prompt`, `version`, `tags` e `techniques_applied`. `created_at` é opcional. Em um snapshot gerado pelo pull, `description` e `tags` só aparecem se existirem no Hub, e `techniques_applied` não se aplica, pois é exclusivo dos prompts otimizados.
