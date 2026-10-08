@@ -1,0 +1,21 @@
+tests/test_prompts.py
+  s_24f78f5d251495::t_366e8f3664a568 4-5,11-12,18-23,29-51,53,55,57,59,61,63,65-69,71-75,77,79-80,82,84-118,121
+prompts/bug_to_user_story_v2.yml
+  s_24f78f5d251495::t_d5c86fee9ec8a7 1-210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0c0383ae766894d718836cb26ded892f5efa3a18",
+  "prompts": {},
+  "sessions": {
+    "s_24f78f5d251495": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a6f1a2-0089-4e6b-8883-cea8be30cdc8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
