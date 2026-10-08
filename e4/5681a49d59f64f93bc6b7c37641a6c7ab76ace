@@ -1,0 +1,26 @@
+docs/specs/documentation-evidence.md
+  s_24f78f5d251495::t_314d56c8e35ebe 1-48
+docs/SPEC.md
+  s_24f78f5d251495::t_43fbcbcf65e807 51,58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e45681a49d59f64f93bc6b7c37641a6c7ab76ace",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_24f78f5d251495": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a6f1a2-0089-4e6b-8883-cea8be30cdc8",
+        "model": "unknown"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
