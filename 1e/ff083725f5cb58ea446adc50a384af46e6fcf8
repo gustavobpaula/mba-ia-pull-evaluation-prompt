@@ -1,0 +1,26 @@
+docs/specs/push-prompts.md
+  s_24f78f5d251495::t_e8984bd5b321d1 1-44
+docs/SPEC.md
+  s_24f78f5d251495::t_1525e66292644a 56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1eff083725f5cb58ea446adc50a384af46e6fcf8",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_24f78f5d251495": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a6f1a2-0089-4e6b-8883-cea8be30cdc8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
