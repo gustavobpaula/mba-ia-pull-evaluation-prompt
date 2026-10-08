@@ -48,7 +48,7 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 
 ## External Integrations
 - **LangSmith**: um `Client()` por execução, configurado pelo `.env`. O pull de `owner/nome` usa `dangerously_pull_public_prompt=True`. O push usa `is_public=True` e o identificador `{USERNAME_LANGSMITH_HUB}/<prompt_name>_v<N>`.
-- **OpenAI**: só por `get_llm`/`get_eval_llm`. `LLM_MODEL` e `EVAL_MODEL` recebem o mesmo modelo, que deve aceitar `temperature=0`.
+- **OpenAI**: só por `get_llm`/`get_eval_llm`. `LLM_MODEL` gera as respostas e `EVAL_MODEL` é o juiz, um modelo mais capaz (AD-6); os dois devem aceitar `temperature=0`.
 - Falha de integração (credencial, prompt inexistente, handle inválido) gera mensagem explícita e código de saída diferente de zero. Nenhum template é publicado parcialmente. Como o Hub grava os metadados antes do commit, eles podem ficar à frente do template após uma falha, e se acertam na próxima execução bem-sucedida.
 
 ## Domain Rules
@@ -83,10 +83,10 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 - **AD-3**: Duas mensagens fixas (system e human). É simples de converter nos dois sentidos, mas não usa mensagens de exemplo nativas.
 - **AD-4**: Só a variável `{bug_report}`, no user prompt. Corrige a duplicação do v1 e casa com a chave do dataset; exige escapar chaves literais.
 - **AD-5**: Few-shot embutido no `system_prompt`. Um único campo, fácil de testar (FR-6); o custo é um system prompt mais longo.
-- **AD-6**: OpenAI, com o mesmo modelo para resposta e avaliação. É mais simples e barato e evita os limites do plano gratuito do Gemini; o juiz pode ser menos rigoroso. Nomes de modelo ficam só no `.env`.
+- **AD-6**: OpenAI, com um modelo menor para gerar as respostas e um modelo mais capaz como juiz (revisada na rodada 4 da avaliação, ao disparar a DD-2). O juiz menor deu notas instáveis para a mesma resposta e penalizou itens presentes na referência; o juiz maior foi estável. O custo das chamadas de juiz aumenta. Os dois modelos precisam aceitar `temperature=0`, porque `metrics.py` sempre a usa. Nomes de modelo ficam só no `.env`.
 - **AD-7**: YAML como fonte de escrita e Hub como fonte de avaliação. Segue o `evaluate.py` congelado e obriga a fazer push antes de cada avaliação.
 
 ## Deferred Decisions
 - **DD-1**: Módulo compartilhado de conversão YAML ↔ template. Gatilho: um terceiro consumidor ou divergência entre a conversão do pull e a do push.
-- **DD-2**: `EVAL_MODEL` mais capaz que `LLM_MODEL`. Gatilho: notas instáveis entre rodadas idênticas ou suspeita de juiz pouco rigoroso.
+- **DD-2**: `EVAL_MODEL` mais capaz que `LLM_MODEL`. Gatilho: notas instáveis entre rodadas idênticas ou suspeita de juiz pouco rigoroso. **Disparada e aplicada na revisão da AD-6** (ver `docs/evaluation-log.md`, rodadas 3 e 4).
 - **DD-3**: Few-shot como mensagens nativas (`FewShotChatMessagePromptTemplate` ou pares human/ai). Gatilho: a avaliação estagnar abaixo de 0.8 por causa da forma dos exemplos.
