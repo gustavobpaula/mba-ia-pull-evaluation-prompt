@@ -43,4 +43,4 @@ Checagem offline entre as rodadas 4 e 5 (não conta como rodada): as 15 resposta
 ### Rodada 6 (autorizada além do limite)
 - Aprovado: as 5 métricas e a média ≥ 0.8 (Helpfulness 0.85, Correctness 0.83, F1 0.84, Clarity 0.87, Precision 0.82; média 0.8403).
 - Os três relatos médios que puxavam o F1 na rodada 5 subiram (modal 0.66 → 0.78, Android 0.66 → 0.80, relatório 0.65 → 0.83) ao passarem a ter seções de critérios técnicos e de contexto.
-- Nenhum exemplo ficou abaixo de 0.69 em qualquer métrica.
+- A menor nota individual da rodada foi 0.6904 (F1 do relato "Carrinho permite finalizar compra mesmo com produto fora de estoque"); todas as demais ficaram acima de 0.70.
