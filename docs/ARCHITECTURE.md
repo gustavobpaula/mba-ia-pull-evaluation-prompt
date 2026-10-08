@@ -33,12 +33,12 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 | `src/evaluate.py`, `src/metrics.py`, `src/utils.py` | Avaliação e helpers fornecidos (congelados) | — | Qualquer alteração |
 | `prompts/<prompt_name>_v<N>.yml` | Dados do prompt (um prompt por arquivo) | — | Código, segredos |
 | `datasets/` | Dataset de avaliação (congelado) | — | Alteração |
-| `tests/` | Testes pytest offline | `utils`, leitura de `prompts/` | Rede, LangSmith, LLM |
+| `tests/` | Testes pytest offline | `utils`, funções dos scripts de etapa, leitura de `prompts/` | Rede, LangSmith, LLM (integrações substituídas por dublês) |
 
 ## Dependency Rules
 - Scripts de `src/` importam helpers por import plano (`from utils import ...`), coerente com a execução `python src/<script>.py`.
 - Lógica compartilhada nova não entra em `utils.py`, que é congelado. Ela fica no script que a usa até haver um segundo consumidor real (DD-1).
-- Testes importam `utils` pelo `sys.path` já configurado em `tests/test_prompts.py`.
+- Testes importam `utils` e os scripts de etapa adicionando `src/` ao `sys.path`, como em `tests/test_prompts.py`.
 
 ## State and Data Ownership
 - `prompts/bug_to_user_story_v2.yml` é **escrito à mão** e é a fonte do prompt otimizado.
@@ -52,7 +52,7 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 - Falha de integração (credencial, prompt inexistente, handle inválido) gera mensagem explícita e código de saída diferente de zero. Nada é publicado parcialmente.
 
 ## Domain Rules
-- **Schema do YAML** (AD-2): uma única chave de topo igual ao nome do arquivo sem extensão, contendo `description`, `system_prompt`, `user_prompt`, `version`, `tags` e `techniques_applied`. `created_at` é opcional.
+- **Schema do YAML** (AD-2): uma única chave de topo igual ao nome do arquivo sem extensão, contendo `description`, `system_prompt`, `user_prompt`, `version`, `tags` e `techniques_applied`. `created_at` é opcional. Em um snapshot gerado pelo pull, `description` e `tags` só aparecem se existirem no Hub, e `techniques_applied` não se aplica, pois é exclusivo dos prompts otimizados.
 - **Mapeamento YAML ↔ Hub** (AD-3): `system_prompt` ↔ mensagem `system` e `user_prompt` ↔ mensagem `human`, nessa ordem e sem outras mensagens.
 - **Variáveis** (AD-4): o template usa o formato f-string, e `{bug_report}` é a única variável, presente apenas no `user_prompt`. Chaves literais nos exemplos são escapadas como `{{ }}`.
 - **Few-shot** (AD-5): os exemplos ficam dentro do `system_prompt`, como texto delimitado.
