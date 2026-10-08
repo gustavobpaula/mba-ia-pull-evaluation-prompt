@@ -33,7 +33,7 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 | `src/evaluate.py`, `src/metrics.py`, `src/utils.py` | Avaliação e helpers fornecidos (congelados) | — | Qualquer alteração |
 | `prompts/<prompt_name>_v<N>.yml` | Dados do prompt (um prompt por arquivo) | — | Código, segredos |
 | `datasets/` | Dataset de avaliação (congelado) | — | Alteração |
-| `tests/` | Testes pytest offline | `utils`, funções dos scripts de etapa, `langchain_core`, leitura de `prompts/` e `datasets/` | Rede, LangSmith, LLM (integrações substituídas por dublês); alterar `datasets/` |
+| `tests/` | Testes pytest offline | `utils`, funções dos scripts de etapa, `langchain_core`, leitura de `prompts/` e `datasets/` | Chamadas de rede ao LangSmith ou ao LLM (integrações substituídas por dublês; importar tipos e exceções da `langsmith` para os dublês é permitido); alterar `datasets/` |
 
 ## Dependency Rules
 - Scripts de `src/` importam helpers por import plano (`from utils import ...`), coerente com a execução `python src/<script>.py`.
