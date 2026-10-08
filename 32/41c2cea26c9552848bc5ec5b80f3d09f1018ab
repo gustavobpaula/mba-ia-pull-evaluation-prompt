@@ -1,0 +1,45 @@
+prompts/bug_to_user_story_v2.yml
+  s_24f78f5d251495::t_c58a8779ad57eb 16-18,20-21
+  s_24f78f5d251495::t_bc399a59c0feda 46-47
+  s_24f78f5d251495::t_4577724ce96c9e 19
+  s_24f78f5d251495::t_08d4b208f404c5 49
+  s_24f78f5d251495::t_2f8c06537c69b0 63,65-66
+  s_24f78f5d251495::t_98f9df79ca4ce7 72
+  s_24f78f5d251495::t_ac6fa2bc4ebd74 116-117
+  s_24f78f5d251495::t_23c8e015cf67c4 137-147
+  s_24f78f5d251495::t_1424e50f17a063 148-150,181,183,250
+  s_24f78f5d251495::t_4b46e7bb1f3219 257
+  s_24f78f5d251495::t_0943fd0fcd6c35 27-34
+  s_24f78f5d251495::t_49712d9e007dad 8,22-23,25,37-38,43,45,48,52-53,58,60,62,67-70,73-75,77,90,93,102,109-111,125,131,162,167,169-174,177,179,194,205,209,211,214-215,221,226,229,232,239-243,246-247
+  s_24f78f5d251495::t_2664a6f8bc8d27 51
+  s_24f78f5d251495::t_d4a1b635cb3e03 26
+  s_24f78f5d251495::t_66fbdf8978f53c 151
+docs/evaluation-log.md
+  s_24f78f5d251495::t_7b030dba24d52e 1-2,4,13-18
+  s_24f78f5d251495::t_cd8c99018d3a0c 19-23
+  s_24f78f5d251495::t_d440edfdb75837 10,30-34
+  s_24f78f5d251495::t_5de7718522bbee 5-9,24-29
+  s_24f78f5d251495::t_6be76ecc11da00 12,42-46
+  s_24f78f5d251495::t_c113f932d9e4a7 3,11,35-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3241c2cea26c9552848bc5ec5b80f3d09f1018ab",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_24f78f5d251495": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a6f1a2-0089-4e6b-8883-cea8be30cdc8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
