@@ -7,13 +7,13 @@ Detalhar `docs/SPEC.md` FR-2, FR-3 e FR-6: criar `prompts/bug_to_user_story_v2.y
 - FR-1: O arquivo segue o schema de `docs/ARCHITECTURE.md` (AD-2) com chave `bug_to_user_story_v2`, `version: "v2"`, `description`, `tags` e `techniques_applied` igual a `Few-shot Learning`, `Role Prompting` e `Skeleton of Thought`.
 - FR-2 (Role Prompting): O `system_prompt` define a persona de um Product Manager experiente em transformar relatos de bugs em user stories.
 - FR-3 (Skeleton of Thought): O `system_prompt` define a estrutura da resposta em etapas, alinhada aos formatos do dataset:
-  - relato com um único problema: "Como um <persona>, eu quero <ação>, para que <benefício>", seguido de "Critérios de Aceitação" em Dado/Quando/Então e, quando o relato trouxer detalhes técnicos, uma seção de contexto;
-  - relato com vários problemas: formato estendido com uma user story principal e critérios agrupados por problema.
+  - relato com um único problema, mesmo que tenha vários sintomas, passos ou detalhes: "Como um <persona>, eu quero <ação>, para que <benefício>", seguido de "Critérios de Aceitação" em Dado/Quando/Então e, quando o relato trouxer detalhes técnicos, uma seção de contexto;
+  - relato que descreve explicitamente mais de um problema distinto (por exemplo, uma lista de problemas numerados): formato estendido com uma user story principal e critérios agrupados por problema.
 - FR-4 (Few-shot): O `system_prompt` contém pelo menos 2 exemplos originais de entrada (relato) e saída (user story), cobrindo um relato com um único problema e um com vários; nenhum exemplo é copiado do dataset de avaliação.
-- FR-5: O `system_prompt` contém regras explícitas: responder em português do Brasil, devolver apenas a user story (sem preâmbulo nem explicações) e não inventar detalhes ausentes do relato.
+- FR-5: O `system_prompt` contém regras explícitas: responder em português do Brasil, devolver apenas a user story (sem preâmbulo nem explicações) e nunca contradizer o relato, completando-o com critérios de comportamento esperado mensuráveis, valores derivados dos dados do relato (por exemplo, totais calculados) e sugestões técnicas usuais para o problema.
 - FR-6: O `system_prompt` instrui o tratamento destes edge cases:
-  - relato vago ou curto: gera a user story sem inventar detalhes técnicos;
-  - vários problemas: aplica o formato estendido;
+  - relato vago ou curto: gera a user story no formato de um único problema, completando com comportamento esperado mensurável sem contradizer o relato;
+  - vários problemas distintos: aplica o formato estendido;
   - dados técnicos citados (IDs, valores, mensagens de erro, endpoints): preservados nos critérios ou no contexto;
   - entrada que não descreve um bug: convertida mesmo assim em user story, sem recusa.
 - FR-7: `tests/test_prompts.py` implementa os 6 testes de `docs/SPEC.md` FR-6 sobre o arquivo v2.

@@ -54,3 +54,4 @@ Entregar um software em Python que faz pull de um prompt de baixa qualidade do L
 - [Pull do prompt semente](specs/pull-prompts.md)
 - [Prompt otimizado v2 e testes de validação](specs/prompt-v2.md)
 - [Push do prompt otimizado v2](specs/push-prompts.md)
+- [Avaliação e iteração do prompt v2](specs/evaluation-iteration.md)
