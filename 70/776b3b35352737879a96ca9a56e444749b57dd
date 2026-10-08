@@ -1,0 +1,21 @@
+docs/SPEC.md
+  s_24f78f5d251495::t_8a255a76f1f373 52-54
+docs/specs/pull-prompts.md
+  s_24f78f5d251495::t_8ec42df1037633 1-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "70776b3b35352737879a96ca9a56e444749b57dd",
+  "prompts": {},
+  "sessions": {
+    "s_24f78f5d251495": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a6f1a2-0089-4e6b-8883-cea8be30cdc8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
