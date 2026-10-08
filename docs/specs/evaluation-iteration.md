@@ -20,7 +20,7 @@ Detalhar `docs/SPEC.md` FR-5: iterar `prompts/bug_to_user_story_v2.yml` em rodad
 
 ## Constraints
 - `src/evaluate.py`, `src/metrics.py`, `src/utils.py` e o dataset não podem ser alterados (`docs/SPEC.md` Constraints).
-- O mesmo modelo é usado para resposta e avaliação (`docs/ARCHITECTURE.md` AD-6).
+- Os modelos de resposta e de avaliação seguem `docs/ARCHITECTURE.md` AD-6 (juiz mais capaz que o gerador desde a rodada 5).
 - O v2 continua atendendo `docs/specs/prompt-v2.md` em todas as rodadas.
 
 ## Assumptions
