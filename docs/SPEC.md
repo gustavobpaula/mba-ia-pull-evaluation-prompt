@@ -49,3 +49,6 @@ Entregar um software em Python que faz pull de um prompt de baixa qualidade do L
 
 ## Open Questions
 - O README final substitui o enunciado do desafio ou acrescenta as seções exigidas a ele?
+
+## Feature Specifications
+- [Pull do prompt semente](specs/pull-prompts.md)
