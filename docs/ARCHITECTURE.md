@@ -73,9 +73,9 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 **A feature must not** alterar arquivos congelados, criar novas camadas ou pacotes, instanciar LLMs fora de `utils` nem colocar segredos em prompts publicados.
 
 ## Testing Strategy
-- **pytest (offline, determinístico)**: verifica o contrato de `prompts/bug_to_user_story_v2.yml` (FR-6, AC-2, AC-3). Testes de conversão YAML ↔ `ChatPromptTemplate` podem montar o template localmente, sem rede.
-- **Execução manual dos scripts**: valida pull e push contra o LangSmith real (AC-1, AC-4, AC-5).
-- **`evaluate.py`**: é o critério de aceite de qualidade do prompt (AC-6).
+- **pytest (offline, determinístico)**: verifica o contrato de `prompts/bug_to_user_story_v2.yml` (`docs/SPEC.md` FR-6, AC-2 e AC-3). Testes de conversão YAML ↔ `ChatPromptTemplate` podem montar o template localmente, sem rede.
+- **Execução manual dos scripts**: valida pull e push contra o LangSmith real (`docs/SPEC.md` AC-1, AC-4 e AC-5).
+- **`evaluate.py`**: é o critério de aceite de qualidade do prompt (`docs/SPEC.md` AC-6).
 
 ## Decisions and Trade-offs
 - **AD-1**: Scripts planos por etapa, sem camadas. É suficiente para o escopo fixo e segue os esqueletos; o custo é alguma duplicação pequena entre pull e push.
@@ -83,10 +83,10 @@ prompts/*_v1.yml ◀── pull ── Hub ◀── push ── prompts/*_v2.ym
 - **AD-3**: Duas mensagens fixas (system e human). É simples de converter nos dois sentidos, mas não usa mensagens de exemplo nativas.
 - **AD-4**: Só a variável `{bug_report}`, no user prompt. Corrige a duplicação do v1 e casa com a chave do dataset; exige escapar chaves literais.
 - **AD-5**: Few-shot embutido no `system_prompt`. Um único campo, fácil de testar (FR-6); o custo é um system prompt mais longo.
-- **AD-6**: OpenAI, com um modelo menor para gerar as respostas e um modelo mais capaz como juiz (revisada na rodada 4 da avaliação, ao disparar a DD-2). O juiz menor deu notas instáveis para a mesma resposta e penalizou itens presentes na referência; o juiz maior foi estável. O custo das chamadas de juiz aumenta. Os dois modelos precisam aceitar `temperature=0`, porque `metrics.py` sempre a usa. Nomes de modelo ficam só no `.env`.
+- **AD-6**: OpenAI, com um modelo menor para gerar as respostas e um modelo mais capaz como juiz (revisada antes da rodada 5 da avaliação, com base na evidência das rodadas 3 e 4, ao disparar a DD-2). O juiz menor deu notas instáveis para a mesma resposta e penalizou itens presentes na referência; o juiz maior foi estável. O custo das chamadas de juiz aumenta. Os dois modelos precisam aceitar `temperature=0`, porque `metrics.py` sempre a usa. Nomes de modelo ficam só no `.env`.
 - **AD-7**: YAML como fonte de escrita e Hub como fonte de avaliação. Segue o `evaluate.py` congelado e obriga a fazer push antes de cada avaliação.
 
 ## Deferred Decisions
 - **DD-1**: Módulo compartilhado de conversão YAML ↔ template. Gatilho: um terceiro consumidor ou divergência entre a conversão do pull e a do push.
-- **DD-2**: `EVAL_MODEL` mais capaz que `LLM_MODEL`. Gatilho: notas instáveis entre rodadas idênticas ou suspeita de juiz pouco rigoroso. **Disparada e aplicada na revisão da AD-6** (ver `docs/evaluation-log.md`, rodadas 3 e 4).
+- **DD-2**: `EVAL_MODEL` mais capaz que `LLM_MODEL`. Gatilho: notas instáveis entre rodadas idênticas ou suspeita de juiz pouco rigoroso. **Disparada e aplicada na revisão da AD-6**: evidência nas rodadas 3 e 4, juiz `gpt-5.4` a partir da rodada 5 (ver `docs/evaluation-log.md`).
 - **DD-3**: Few-shot como mensagens nativas (`FewShotChatMessagePromptTemplate` ou pares human/ai). Gatilho: a avaliação estagnar abaixo de 0.8 por causa da forma dos exemplos.

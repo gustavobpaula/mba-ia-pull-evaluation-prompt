@@ -8,11 +8,11 @@ Detalhar `docs/SPEC.md` FR-5: iterar `prompts/bug_to_user_story_v2.yml` em rodad
 - FR-2: Cada rodada é registrada em `docs/evaluation-log.md` com número, resumo das mudanças no prompt, as 5 notas, a média, o status e o link do experimento no LangSmith.
 - FR-3: A entrega tem no máximo 5 rodadas, contando a rodada 1 já executada (média 0.4778, reprovada).
 - FR-4: Assim que uma rodada for aprovada, a iteração para.
-- FR-5: Se a rodada 5 não for aprovada, a iteração para e o engenheiro recebe o diagnóstico e as opções (por exemplo, `docs/ARCHITECTURE.md` DD-2 ou DD-3) antes de qualquer nova mudança.
+- FR-5: Se a rodada 5 não for aprovada, a iteração para e o engenheiro recebe o diagnóstico e as opções (por exemplo, `docs/ARCHITECTURE.md` DD-2 ou DD-3) antes de qualquer nova mudança. Rodadas além da 5ª só acontecem com autorização explícita do engenheiro; a rodada 6 foi autorizada após a rodada 5 (ver `docs/evaluation-log.md`).
 - FR-6: Entre rodadas, mudam apenas o v2, os testes que dependem do texto dele e o registro. Os modelos do `.env` não mudam sem decisão do engenheiro.
 
 ## Acceptance Criteria
-- AC-1 [FR-1, FR-4]: Em alguma rodada ≤ 5, `src/evaluate.py` exibe "STATUS: APROVADO" para o v2 publicado, cumprindo `docs/SPEC.md` AC-6.
+- AC-1 [FR-1, FR-4, FR-5]: Em alguma rodada ≤ 5, ou em uma rodada adicional autorizada pelo engenheiro, `src/evaluate.py` exibe "STATUS: APROVADO" para o v2 publicado, cumprindo `docs/SPEC.md` AC-6.
 - AC-2 [FR-1]: Antes de cada avaliação, `pytest` passa e o push publica um template novo (termina com código 0, sem o aviso de "sem alterações").
 - AC-3 [FR-2]: `docs/evaluation-log.md` tem uma linha por rodada executada, com todos os campos de FR-2.
 - AC-4 [FR-3, FR-5]: Nenhuma sexta rodada é executada sem decisão explícita do engenheiro.
