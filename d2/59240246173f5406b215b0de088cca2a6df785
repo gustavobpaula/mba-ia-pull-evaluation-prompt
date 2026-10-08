@@ -1,0 +1,33 @@
+src/push_prompts.py
+  s_24f78f5d251495::t_dc1e8e404fdc2c 57-58,183-184
+  s_24f78f5d251495::t_3b0fe8f9ca05c4 135-148,151
+  s_24f78f5d251495::t_9c090e94607eea 109,112-114
+  s_24f78f5d251495::t_f9b29cef995580 43,45,49-56,59-84,97-108,110-111,115-122,149-150,152-172,177-182,185-196
+tests/test_push_prompts.py
+  s_24f78f5d251495::t_8e87eb22d075a6 60
+  s_24f78f5d251495::t_03b5af5eb068a7 1-32,39-42,44-47,49-59,61-107,122-182,184-186,196-201
+  s_24f78f5d251495::t_01be258a6a1de9 33-38,43,48
+  s_24f78f5d251495::t_0a8bd01b3b87cd 108-121
+  s_24f78f5d251495::t_6ecc26fca64726 183,187-195
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d259240246173f5406b215b0de088cca2a6df785",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_24f78f5d251495": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a6f1a2-0089-4e6b-8883-cea8be30cdc8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
