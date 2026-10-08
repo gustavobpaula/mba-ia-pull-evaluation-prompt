@@ -48,10 +48,11 @@ Entregar um software em Python que faz pull de um prompt de baixa qualidade do L
 - Alterar o dataset ou os scripts fornecidos prontos (`evaluate.py`, `metrics.py`, `utils.py`).
 
 ## Open Questions
-- O README final substitui o enunciado do desafio ou acrescenta as seções exigidas a ele?
+- Nenhuma.
 
 ## Feature Specifications
 - [Pull do prompt semente](specs/pull-prompts.md)
 - [Prompt otimizado v2 e testes de validação](specs/prompt-v2.md)
 - [Push do prompt otimizado v2](specs/push-prompts.md)
 - [Avaliação e iteração do prompt v2](specs/evaluation-iteration.md)
+- [Documentação e evidências](specs/documentation-evidence.md)
